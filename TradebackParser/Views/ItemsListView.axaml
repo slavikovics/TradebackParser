@@ -1,0 +1,36 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:TradebackParser.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="TradebackParser.Views.ItemsListView"
+             x:DataType="viewModels:ItemsListViewModel">
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <viewModels:ItemsListViewModel/>
+    </Design.DataContext>
+    <StackPanel Orientation="Vertical" Margin="10">
+        <TextBlock HorizontalAlignment="Center" Margin="5">Choose .html file from "https://tradeback.io/" to parse items: </TextBlock>
+      
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBox HorizontalAlignment="Center" Width="300" Margin="5"></TextBox>
+            <Button Command="{Binding OpenOutputFileCommand}" Margin="5">Open</Button>
+        </StackPanel>
+        <Button IsEnabled="{Binding LoadingButtonEnabled}" HorizontalAlignment="Center" Margin="5 15 5 15">2. Load Prices</Button>
+        <TextBlock HorizontalAlignment="Center" Margin="5">Choose multiplier</TextBlock>
+        <NumericUpDown IsEnabled="{Binding
+       NumericUppDownEnabled}" HorizontalAlignment="Center" Margin="5 5 5 15" Value="0.55" Increment="0.01"></NumericUpDown>
+      
+        <TextBlock IsEnabled="{Binding
+       OpenOutputFileEnabled}" HorizontalAlignment="Center" Margin="5">Choose path for output file: </TextBlock>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBox IsEnabled="{Binding
+       OpenOutputFileEnabled}" HorizontalAlignment="Center" Width="300" Margin="5"></TextBox>
+            <Button IsEnabled="{Binding
+       OpenOutputFileEnabled}" Margin="5">3. Open</Button>
+        </StackPanel>
+        <Button IsEnabled="{Binding OpenOutputFileEnabled}" HorizontalAlignment="Center" Margin="5 15 5 15">4. Write data</Button>
+    </StackPanel>
+</UserControl>
