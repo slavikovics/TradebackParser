@@ -24,20 +24,18 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Border Grid.Row="0" Height="60" Width="60" Background="{DynamicResource ButtonBackground}" CornerRadius="15">
-                <Image Height="50" Width="50" Source="../Assets/website.png"/>
+                <Image Height="50" Width="50" Source="../Assets/Website.png"/>
             </Border>
             <Border Grid.Row="1" Height="60" Width="60" Background="{DynamicResource ButtonBackground}" CornerRadius="15">
-                <Image Height="48" Width="48" Source="../Assets/grid.png"/>
+                <Image Height="48" Width="48" Source="../Assets/Grid.png"/>
             </Border>
             <Border Grid.Row="2" Height="60" Width="60" Background="{DynamicResource ButtonBackground}" CornerRadius="15">
-                <Image Height="50" Width="50" Source="../Assets/multiplier.png"/>
+                <Image Height="50" Width="50" Source="../Assets/Multiplier.png"/>
             </Border>
             <Border Grid.Row="3" Height="60" Width="60" Background="{DynamicResource ButtonBackground}" CornerRadius="15">
-                <Image Height="48" Width="48" Source="../Assets/folder.png"/>
+                <Image Height="48" Width="48" Source="../Assets/Folder.png"/>
             </Border>
         </Grid>
-        <Viewbox Grid.Column="1">
-            <ContentControl Content="{Binding ContentViewModel}"/>
-        </Viewbox>
+            <ContentControl Grid.Column="1" Content="{Binding ContentViewModel}"/>
     </Grid>
 </UserControl>
