@@ -9,26 +9,46 @@
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <viewModels:OpenFileViewModel />
+        <viewModels:OpenFileViewModel/>
     </Design.DataContext>
     <ScrollViewer>
         <StackPanel Orientation="Vertical" Margin="10">
             <TextBlock Margin="5" FontSize="30">Downloading skins list</TextBlock>
-            <Border Margin="5" CornerRadius="8" ClipToBounds="True">
+            <TextBlock FontSize="20" Margin="5">1. Open "https://tradeback.io/".</TextBlock>
+            <Border Margin="5 5 5 20" CornerRadius="8" ClipToBounds="True">
                 <Image Source="../Assets/Tradeback.png"/> 
             </Border>
-            <TextBlock HorizontalAlignment="Center" FontSize="20" Margin="5">1. Open "https://tradeback.io/".</TextBlock>
-            <TextBlock HorizontalAlignment="Center" Margin="5">2. Go to price comparison tab.</TextBlock>
-            <TextBlock HorizontalAlignment="Center" Margin="5">3. Filter marketplaces and items according to your needs.</TextBlock>
-            <TextBlock HorizontalAlignment="Center" Margin="5">4. Turn off auto update.</TextBlock>
-            <TextBlock HorizontalAlignment="Center" Margin="5">5. Scroll list to the end.</TextBlock>
-            <TextBlock HorizontalAlignment="Center" Margin="5">6. Download the webpage.</TextBlock>
-            <TextBlock HorizontalAlignment="Center" Margin="5">7. Choose .html file from "https://tradeback.io/" to parse items.</TextBlock>
+            <TextBlock FontSize="20" Margin="5">2. Go to price comparison tab.</TextBlock>
+            <Border Margin="5 5 5 20" CornerRadius="8" ClipToBounds="True">
+                <Image Source="../Assets/PriceComparison.png"/>
+            </Border>
+            <TextBlock FontSize="20" Margin="5">3. Filter marketplaces and items according to your needs.</TextBlock>
+            <Border Margin="5 5 5 20" CornerRadius="8" ClipToBounds="True">
+                <Image Source="../Assets/ApplyFilters.png"/>
+            </Border>
+            <TextBlock FontSize="20" Margin="5">4. Turn off auto update.</TextBlock>
+            <Border Margin="5 5 5 20" CornerRadius="8" ClipToBounds="True">
+                <Image Source="../Assets/TurnOffAutoUpdate.png"/>
+            </Border>
+            <TextBlock FontSize="20" Margin="5">5. Scroll list to the end.</TextBlock>
+            <Border Margin="5 5 5 20" CornerRadius="8" ClipToBounds="True">
+                <Image Source="../Assets/ScrollToEnd.png"/>
+            </Border>
+            <TextBlock FontSize="20" Margin="5">6. Download the webpage.</TextBlock>
+            <Border Margin="5 5 5 20" CornerRadius="8" ClipToBounds="True">
+                <Image Source="../Assets/SavePage.png"/>
+            </Border>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock VerticalAlignment="Center" FontSize="15" Margin="5">Choose .html file</TextBlock>
                 <TextBox Text="{Binding FileName}" HorizontalAlignment="Center" Width="300" Margin="5"/>
                 <Button Margin="5">Pick file</Button>
             </StackPanel>
-            <Button Command="{Binding OpenFileCommand}" HorizontalAlignment="Center" Margin="15">Next</Button>
+            <Button Command="{Binding OpenFileCommand}" CornerRadius="15" HorizontalAlignment="Center" Margin="15">
+                <StackPanel Orientation="Vertical">
+                    <Image Width="25" Height="25" Source="../Assets/Next.png"/>
+                    <TextBlock HorizontalAlignment="Center">Next</TextBlock>
+                </StackPanel>
+            </Button>
         </StackPanel>
     </ScrollViewer>
 </UserControl>
