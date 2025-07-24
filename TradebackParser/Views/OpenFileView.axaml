@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:TradebackParser.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="TradebackParser.Views.OpenFileView">
+             x:Class="TradebackParser.Views.OpenFileView"
+             x:DataType="viewModels:OpenFileViewModel">
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
@@ -14,9 +15,9 @@
     <StackPanel Orientation="Vertical" Margin="10">
         <TextBlock HorizontalAlignment="Center" Margin="5">Choose .html file from "https://tradeback.io/" to parse items: </TextBlock>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <TextBox HorizontalAlignment="Center" Width="300" Margin="5"></TextBox>
+            <TextBox Text="{Binding FileName}" HorizontalAlignment="Center" Width="300" Margin="5"/>
             <Button Margin="5">Pick file</Button>
         </StackPanel>
-        <Button HorizontalAlignment="Center" Margin="15">Next</Button>
+        <Button Command="{Binding OpenFileCommand}" HorizontalAlignment="Center" Margin="15">Next</Button>
     </StackPanel>
 </UserControl>

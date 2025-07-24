@@ -5,11 +5,11 @@ using TradebackParser.ViewModels;
 
 namespace TradebackParser.Views;
 
-public partial class ItemsListView : UserControl
+public partial class ItemsView : UserControl
 {
-    public ItemsListView()
+    public ItemsView()
     {
         InitializeComponent();
-        DataContext = new ItemsListViewModel();
+        DataContext = new ItemsViewModel();
     }
 }
