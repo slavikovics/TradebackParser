@@ -28,6 +28,23 @@
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0">
                 <Border Height="60" Width="60" Background="DarkGreen" CornerRadius="15">
+                    <Border.Styles>
+                        <Style Selector="Border">
+                            <Setter Property="BoxShadow" Value="0 0 0 0 DarkGreen" />
+                            <Style.Animations>
+                                <!-- Glow animation definition -->
+                                <Animation Duration="0:0:1.5" IterationCount="Infinite" PlaybackDirection="Alternate">
+                                    <KeyFrame Cue="0%">
+                                        <Setter Property="BoxShadow" Value="0 0 8 3 DarkGreen" />
+                                    </KeyFrame>
+                                    <KeyFrame Cue="100%">
+                                        <Setter Property="BoxShadow" Value="0 0 40 10 DarkGreen" />
+                                    </KeyFrame>
+                                </Animation>
+                            </Style.Animations>
+                        </Style>
+                    </Border.Styles>
+                    
                     <Image Height="50" Width="50" Source="../Assets/Website.png"/>
                 </Border>
                 <TextBlock Margin="5" HorizontalAlignment="Center" FontSize="10">Download and open</TextBlock>
@@ -55,11 +72,12 @@
             
             <StackPanel Grid.Row="6">
                 <Border Height="60" Width="60" Background="{DynamicResource ButtonBackground}" CornerRadius="15">
-                    <Image Height="48" Width="48" Source="../Assets/Folder.png"/>
+                    <Image Height="48" Width="48" Source="../Assets/Download.png"/>
                 </Border>
                 <TextBlock Margin="5" HorizontalAlignment="Center" FontSize="10">Output to file</TextBlock>
             </StackPanel>
         </Grid>
         <ContentControl Grid.Column="1" Content="{Binding ContentViewModel}"/>
     </Grid>
+    
 </UserControl>
