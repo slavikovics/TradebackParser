@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using TradebackParser.FilePicker;
 
 namespace TradebackParser.ViewModels;
 
@@ -11,10 +12,10 @@ public partial class MainViewModel : ViewModelBase
     
     public string FileName { get; set; }
 
-    public MainViewModel()
+    public MainViewModel(IFilePickerService filePickerService)
     {
         FileName = string.Empty;
-        _contentViewModel = new OpenFileViewModel();
+        _contentViewModel = new OpenFileViewModel(filePickerService);
         (_contentViewModel as OpenFileViewModel)!.FileOpened += SwitchToItems;
     }
 
