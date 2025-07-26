@@ -14,35 +14,45 @@
     <ScrollViewer>
         <StackPanel Orientation="Vertical" Margin="10">
             <TextBlock Margin="5" FontSize="30">Downloading skins list</TextBlock>
-            <TextBlock FontSize="20" Margin="5">1. Open "https://tradeback.io/".</TextBlock>
-            <Border Margin="5 5 5 20" CornerRadius="8" ClipToBounds="True">
-                <Image Source="../Assets/Tradeback.png"/> 
-            </Border>
-            <TextBlock FontSize="20" Margin="5">2. Go to price comparison tab.</TextBlock>
-            <Border Margin="5 5 5 20" CornerRadius="8" ClipToBounds="True">
-                <Image Source="../Assets/PriceComparison.png"/>
-            </Border>
-            <TextBlock FontSize="20" Margin="5">3. Filter marketplaces and items according to your needs.</TextBlock>
-            <Border Margin="5 5 5 20" CornerRadius="8" ClipToBounds="True">
-                <Image Source="../Assets/ApplyFilters.png"/>
-            </Border>
-            <TextBlock FontSize="20" Margin="5">4. Turn off auto update.</TextBlock>
-            <Border Margin="5 5 5 20" CornerRadius="8" ClipToBounds="True">
-                <Image Source="../Assets/TurnOffAutoUpdate.png"/>
-            </Border>
-            <TextBlock FontSize="20" Margin="5">5. Scroll list to the end.</TextBlock>
-            <Border Margin="5 5 5 20" CornerRadius="8" ClipToBounds="True">
-                <Image Source="../Assets/ScrollToEnd.png"/>
-            </Border>
-            <TextBlock FontSize="20" Margin="5">6. Download the webpage.</TextBlock>
-            <Border Margin="5 5 5 20" CornerRadius="8" ClipToBounds="True">
-                <Image Source="../Assets/SavePage.png"/>
-            </Border>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock VerticalAlignment="Center" FontSize="15" Margin="5">Choose .html file</TextBlock>
-                <TextBox Text="{Binding FileName}" HorizontalAlignment="Center" Width="300" Margin="5"/>
-                <Button Margin="5" Command="{Binding PickFileCommand}">Pick file</Button>
-            </StackPanel>
+            <Expander Margin="10" IsExpanded="True" HorizontalAlignment="Stretch" Header="Tradeback skins list guide">
+                <StackPanel>
+                    <TextBlock FontSize="20" Margin="5">1. Open "https://tradeback.io/".</TextBlock>
+                    <Border Margin="5 5 5 20" CornerRadius="8" ClipToBounds="True">
+                        <Image Source="../Assets/Tradeback.png"/> 
+                    </Border>
+                    <TextBlock FontSize="20" Margin="5">2. Go to price comparison tab.</TextBlock>
+                    <Border Margin="5 5 5 20" CornerRadius="8" ClipToBounds="True">
+                        <Image Source="../Assets/PriceComparison.png"/>
+                    </Border>
+                    <TextBlock FontSize="20" Margin="5">3. Filter marketplaces and items according to your needs.</TextBlock>
+                    <Border Margin="5 5 5 20" CornerRadius="8" ClipToBounds="True">
+                        <Image Source="../Assets/ApplyFilters.png"/>
+                    </Border>
+                    <TextBlock FontSize="20" Margin="5">4. Turn off auto update.</TextBlock>
+                    <Border Margin="5 5 5 20" CornerRadius="8" ClipToBounds="True">
+                        <Image Source="../Assets/TurnOffAutoUpdate.png"/>
+                    </Border>
+                    <TextBlock FontSize="20" Margin="5">5. Scroll list to the end.</TextBlock>
+                    <Border Margin="5 5 5 20" CornerRadius="8" ClipToBounds="True">
+                        <Image Source="../Assets/ScrollToEnd.png"/>
+                    </Border>
+                    <TextBlock FontSize="20" Margin="5">6. Download the webpage.</TextBlock>
+                    <Border Margin="5 5 5 20" CornerRadius="8" ClipToBounds="True">
+                        <Image Source="../Assets/SavePage.png"/>
+                    </Border>
+                </StackPanel>
+            </Expander>
+            <TextBlock FontSize="15" HorizontalAlignment="Center" TextWrapping="Wrap" Margin="5 15 5 10">Press "Pick file" button to open File Explorer or just copy and paste path to a textbox below.</TextBlock>
+            <Grid Margin="5 5 5 25">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="15" Margin="5">Choose .html file</TextBlock>
+                <TextBox Grid.Column="1" Text="{Binding FileName}" Margin="5"/>
+                <Button Grid.Column="2" Margin="5" Command="{Binding PickFileCommand}">Pick file</Button>
+            </Grid>
             <Button Command="{Binding OpenFileCommand}" CornerRadius="15" HorizontalAlignment="Center" Margin="15">
                 <StackPanel Orientation="Vertical">
                     <Image Width="25" Height="25" Source="../Assets/Next.png"/>
