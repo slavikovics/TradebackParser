@@ -14,7 +14,7 @@ namespace TradebackParser;
 
 public partial class App : Application
 {
-    private IServiceProvider? _serviceProvider;
+    public IServiceProvider? ServiceProvider;
     
     public override void Initialize()
     {
@@ -25,21 +25,21 @@ public partial class App : Application
     {
         var services = new ServiceCollection();
         ConfigureServices(services);
-        _serviceProvider = services.BuildServiceProvider();
+        ServiceProvider = services.BuildServiceProvider();
         
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
             // More info: https://docs.avaloniaui.net/docs/guides/development-guides/data-validation#manage-validationplugins
             DisableAvaloniaDataAnnotationValidation();
-            desktop.MainWindow = _serviceProvider.GetRequiredService<MainWindow>();
-            desktop.MainWindow.DataContext = _serviceProvider.GetRequiredService<MainViewModel>();
+            desktop.MainWindow = ServiceProvider.GetRequiredService<MainWindow>();
+            desktop.MainWindow.DataContext = ServiceProvider.GetRequiredService<MainViewModel>();
         }
         else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
         {
             singleViewPlatform.MainView = new MainView
             {
-                DataContext = _serviceProvider.GetRequiredService<MainViewModel>()
+                DataContext = ServiceProvider.GetRequiredService<MainViewModel>()
             };
         }
 
@@ -52,16 +52,12 @@ public partial class App : Application
         services.AddTransient<MainWindow>();
         
         // Register ViewModels
-        services.AddTransient<MainViewModel>();
+        services.AddSingleton<MainViewModel>();
         services.AddTransient<OpenFileViewModel>();
         services.AddTransient<ItemsViewModel>();
         
         // Register services with factory that resolves TopLevel
-        services.AddTransient<IFilePickerService>(provider => 
-        {
-            var lifetime = (IClassicDesktopStyleApplicationLifetime)ApplicationLifetime!;
-            return new FilePickerService(lifetime.MainWindow!);
-        });
+        services.AddTransient<IFilePickerService, FilePickerService>();
     }
 
     private void DisableAvaloniaDataAnnotationValidation()

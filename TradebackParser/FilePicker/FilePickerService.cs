@@ -6,17 +6,15 @@ namespace TradebackParser.FilePicker;
 
 public class FilePickerService : IFilePickerService
 {
-    private readonly TopLevel? _topLevel;
+    private readonly TopLevelService _topLevelService;
 
-    public FilePickerService(TopLevel topLevel)
+    public FilePickerService(TopLevelService topLevelService)
     {
-        _topLevel = topLevel;
+        _topLevelService = topLevelService;
     }
     
     public async Task<string?> PickFileAsync()
     {
-        if (_topLevel == null) return null;
-        
         var htmlFilter = new FilePickerFileType("HTML Files")
         {
             Patterns = ["*.html", "*.htm"],
@@ -31,7 +29,7 @@ public class FilePickerService : IFilePickerService
             AllowMultiple = false
         };
 
-        var files = await _topLevel.StorageProvider.OpenFilePickerAsync(options);
+        var files = await _topLevelService.MainWindow.StorageProvider.OpenFilePickerAsync(options);
         return files?.Count > 0 ? files[0].TryGetLocalPath() : null;
     }
 }
