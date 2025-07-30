@@ -44,7 +44,7 @@ public partial class MainViewModel : ViewModelBase
         GridPhase?.Invoke();
         WebsiteBorderColor = new SolidColorBrush(Colors.DarkGreen);
         if (e is CustomEventArgs args) FileName = args.Data;
-        ContentViewModel = new ItemsViewModel();
+        ContentViewModel = new ItemsViewModel(FileName);
     }
 
     private void SwitchToMultipliers(object? sender, EventArgs e)

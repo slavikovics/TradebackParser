@@ -10,6 +10,6 @@ public partial class ItemsView : UserControl
     public ItemsView()
     {
         InitializeComponent();
-        DataContext = new ItemsViewModel();
+        //DataContext = new ItemsViewModel();
     }
 }

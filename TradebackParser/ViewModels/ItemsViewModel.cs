@@ -1,4 +1,6 @@
 ﻿using System.Collections.ObjectModel;
+using System.IO;
+using System.Linq;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -14,11 +16,21 @@ public partial class ItemsViewModel : ViewModelBase
         get => _items;
         set => _items = value;
     }
-}
 
-public class ItemModel
-{
-    public string Name { get; set; }
-    public decimal Price1 { get; set; }
-    public decimal Price2 { get; set; }
+    public ItemsViewModel(string fileName)
+    {
+        string content = ReadFile(fileName);
+        Parser parser = new Parser(content);
+        _items = new ObservableCollection<ItemModel>();
+
+        foreach (var item in parser.Parse())
+        {
+            _items.Add(item);
+        }
+    }
+
+    private string ReadFile(string fileName)
+    {
+        return File.ReadAllText(fileName);
+    }
 }
