@@ -45,12 +45,14 @@ public partial class MainViewModel : ViewModelBase
         WebsiteBorderColor = new SolidColorBrush(Colors.DarkGreen);
         if (e is CustomEventArgs args) FileName = args.Data;
         ContentViewModel = new ItemsViewModel(FileName);
+        (ContentViewModel as ItemsViewModel)!.ItemsPreviewFinished += SwitchToMultipliers;
     }
 
-    private void SwitchToMultipliers(object? sender, EventArgs e)
+    private void SwitchToMultipliers()
     {
         MultiplierPhase?.Invoke();
         GridBorderColor = new SolidColorBrush(Colors.DarkGreen);
+        ContentViewModel = new MultiplierViewModel();
     }
 
     private void SwitchToDownload(object? sender, EventArgs e)

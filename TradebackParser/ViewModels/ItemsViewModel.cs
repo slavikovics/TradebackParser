@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -8,6 +9,7 @@ namespace TradebackParser.ViewModels;
 
 public partial class ItemsViewModel : ViewModelBase
 {
+    public event Action? ItemsPreviewFinished;
     public int ItemCount => Items?.Count ?? 0;
     
     private ObservableCollection<ItemModel> _items;
@@ -37,6 +39,6 @@ public partial class ItemsViewModel : ViewModelBase
     [RelayCommand]
     private void FinishItemsPreview()
     {
-        
+        ItemsPreviewFinished?.Invoke();
     }
 }

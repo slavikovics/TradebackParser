@@ -63,7 +63,7 @@
             <Image Grid.Row="1" Height="25" Width="25" Source="../Assets/Arrow.png"/>
             
             <StackPanel Grid.Row="2">
-                <Border Name="GridBorder" Height="60" Width="60" Background="{DynamicResource ButtonBackground}" CornerRadius="15">
+                <Border Name="GridBorder" Height="60" Width="60" Background="{Binding GridBorderColor}" CornerRadius="15">
                     <Image Height="48" Width="48" Source="../Assets/Grid.png"/>
                 </Border>
                 <TextBlock Margin="5" HorizontalAlignment="Center" FontSize="10">Preview items</TextBlock>
@@ -72,7 +72,7 @@
             <Image Grid.Row="3" Height="25" Width="25" Source="../Assets/Arrow.png"/>
             
             <StackPanel Grid.Row="4">
-                <Border Name="MultiplierBorder" Height="60" Width="60" Background="{DynamicResource ButtonBackground}" CornerRadius="15">
+                <Border Name="MultiplierBorder" Height="60" Width="60" Background="{Binding MultiplierBorderColor}" CornerRadius="15">
                     <Image Height="50" Width="50" Source="../Assets/Multiplier.png"/>
                 </Border>
                 <TextBlock Margin="5" HorizontalAlignment="Center" FontSize="10">Set multiplier</TextBlock>
@@ -81,7 +81,7 @@
             <Image Grid.Row="5" Height="25" Width="25" Source="../Assets/Arrow.png"/>
             
             <StackPanel Grid.Row="6">
-                <Border Name="DownloadBorder" Height="60" Width="60" Background="{DynamicResource ButtonBackground}" CornerRadius="15">
+                <Border Name="DownloadBorder" Height="60" Width="60" Background="{Binding DownloadBorderColor}" CornerRadius="15">
                     <Image Height="48" Width="48" Source="../Assets/Download.png"/>
                 </Border>
                 <TextBlock Margin="5" HorizontalAlignment="Center" FontSize="10">Output to file</TextBlock>
