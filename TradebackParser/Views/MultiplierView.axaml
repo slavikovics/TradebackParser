@@ -2,7 +2,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:TradebackParser.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="viewModels:MultiplierViewModel"
              x:Class="TradebackParser.Views.MultiplierView">
     <StackPanel>
         <TextBlock FontSize="25">Set proposed price formula, exception rules</TextBlock>
@@ -40,18 +42,18 @@
                 <Image VerticalAlignment="Center" HorizontalAlignment="Center" Source="../Assets/Multiply.png" Height="24" Width="24"/>
             </Border>
             <NumericUpDown Grid.Row="0" Margin="3" Height="20" Grid.Column="3" Increment="0.01" Value="0.55"/>
-            <CheckBox Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5 5 0 5"/>
-            <TextBlock Grid.Row="1" Grid.Column="1" Margin="3 3 3 3" HorizontalAlignment="Center" VerticalAlignment="Center">Count 1 greater than</TextBlock>
-            <Border Grid.Row="1" Margin="3" Width="30" Height="30" ClipToBounds="True" Grid.Column="2" CornerRadius="5" Background="{DynamicResource ButtonBackground}">
-                <Image VerticalAlignment="Center" HorizontalAlignment="Center" Source="../Assets/GreaterThanSign.png" Height="25" Width="25"/>
+            <CheckBox IsChecked="{Binding IsFirstCountRuleActive}" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5 5 0 5"/>
+            <TextBlock IsEnabled="{Binding IsFirstCountRuleActive}" Grid.Row="1" Grid.Column="1" Margin="3 3 3 3" HorizontalAlignment="Center" VerticalAlignment="Center">Count 1 greater than</TextBlock>
+            <Border IsEnabled="{Binding IsFirstCountRuleActive}" Grid.Row="1" Margin="3" Width="30" Height="30" ClipToBounds="True" Grid.Column="2" CornerRadius="5" Background="{DynamicResource ButtonBackground}">
+                <Image IsEnabled="{Binding IsFirstCountRuleActive}" VerticalAlignment="Center" HorizontalAlignment="Center" Source="../Assets/GreaterThanSign.png" Height="25" Width="25"/>
             </Border>
-            <NumericUpDown Grid.Row="1" Grid.Column="3" Increment="1" Height="20" Minimum="0" Value="0" Margin="3"/>
-            <CheckBox Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5 5 0 5"/>
-            <TextBlock Grid.Row="2" Grid.Column="1" Margin="3 3 3 3" HorizontalAlignment="Center" VerticalAlignment="Center">Count 2 greater than</TextBlock>
-            <Border Grid.Row="2" Margin="3" Width="30" Height="30" ClipToBounds="True" Grid.Column="2" CornerRadius="5" Background="{DynamicResource ButtonBackground}">
-                <Image VerticalAlignment="Center" HorizontalAlignment="Center" Source="../Assets/GreaterThanSign.png" Height="25" Width="25"/>
+            <NumericUpDown IsEnabled="{Binding IsFirstCountRuleActive}" Grid.Row="1" Grid.Column="3" Increment="1" Height="20" Minimum="0" Value="0" Margin="3"/>
+            <CheckBox IsChecked="{Binding IsSecondCountRuleActive}" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5 5 0 5"/>
+            <TextBlock IsEnabled="{Binding IsSecondCountRuleActive}" Grid.Row="2" Grid.Column="1" Margin="3 3 3 3" HorizontalAlignment="Center" VerticalAlignment="Center">Count 2 greater than</TextBlock>
+            <Border IsEnabled="{Binding IsSecondCountRuleActive}" Grid.Row="2" Margin="3" Width="30" Height="30" ClipToBounds="True" Grid.Column="2" CornerRadius="5" Background="{DynamicResource ButtonBackground}">
+                <Image IsEnabled="{Binding IsSecondCountRuleActive}" VerticalAlignment="Center" HorizontalAlignment="Center" Source="../Assets/GreaterThanSign.png" Height="25" Width="25"/>
             </Border>
-            <NumericUpDown Grid.Row="2" Grid.Column="3" Increment="1" Height="20" Minimum="0" Value="0" Margin="3"/>
+            <NumericUpDown IsEnabled="{Binding IsSecondCountRuleActive}" Grid.Row="2" Grid.Column="3" Increment="1" Height="20" Minimum="0" Value="0" Margin="3"/>
         </Grid>
     </StackPanel>
 </UserControl>

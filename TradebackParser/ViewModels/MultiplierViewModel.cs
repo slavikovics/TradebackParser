@@ -1,6 +1,12 @@
+using CommunityToolkit.Mvvm.ComponentModel;
+
 namespace TradebackParser.ViewModels;
 
-public class MultiplierViewModel : ViewModelBase
+public partial class MultiplierViewModel : ViewModelBase
 {
+    [ObservableProperty]
+    private bool _isFirstCountRuleActive = true;
     
+    [ObservableProperty]
+    private bool _isSecondCountRuleActive = true;
 }
