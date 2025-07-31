@@ -33,4 +33,10 @@ public partial class ItemsViewModel : ViewModelBase
     {
         return File.ReadAllText(fileName);
     }
+
+    [RelayCommand]
+    private void FinishItemsPreview()
+    {
+        
+    }
 }

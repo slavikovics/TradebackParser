@@ -15,6 +15,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" FontSize="16" FontWeight="Bold">
             <Run Text="Items Found:"/>
@@ -53,5 +54,11 @@
                                     Width="Auto" />
             </DataGrid.Columns>
         </DataGrid>
+        <Button Grid.Row="2" Command="{Binding FinishItemsPreviewCommand}" CornerRadius="15" HorizontalAlignment="Center" Margin="15">
+            <StackPanel Orientation="Vertical">
+                <Image Width="25" Height="25" Source="../Assets/Next.png"/>
+                <TextBlock HorizontalAlignment="Center">Next</TextBlock>
+            </StackPanel>
+        </Button>
     </Grid>
 </UserControl>
