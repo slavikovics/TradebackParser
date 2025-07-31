@@ -19,7 +19,7 @@ public class Parser
     }
     
     private List<ItemModel> ReshapeString(double multiplier)
-    { 
+    {
         var items = new List<ItemModel>();
         int position = 0;
 
@@ -48,7 +48,7 @@ public class Parser
     {
         position = _pageSource.IndexOf("price usd", position, StringComparison.Ordinal);
         position = _pageSource.IndexOf("data-price", position, StringComparison.Ordinal);
-        position = _pageSource.IndexOf("\"", position, StringComparison.Ordinal);
+        position = _pageSource.IndexOf('"', position);
         position++;
         var endIndex = _pageSource.IndexOf('\"', position);
         endIndex--;
@@ -60,7 +60,7 @@ public class Parser
     {
         position = _pageSource.IndexOf("first-line", position, StringComparison.Ordinal);
         position = _pageSource.IndexOf("data-price", position, StringComparison.Ordinal);
-        position = _pageSource.IndexOf("\"", position, StringComparison.Ordinal);
+        position = _pageSource.IndexOf('"', position);
         position++;
         var endIndex = _pageSource.IndexOf('\"', position);
         endIndex--;
@@ -89,6 +89,7 @@ public class Parser
         endIndex--;
         var count1 = _pageSource.Substring(position, endIndex - position + 1);
         count1 = count1.Replace(" pcs.", "");
+        if (count1 == "") return 0;
         return Convert.ToInt32(count1);
     }
     
@@ -102,6 +103,7 @@ public class Parser
         endIndex--;
         var count2 = _pageSource.Substring(position, endIndex - position + 1);
         count2 = count2.Replace(" pcs.", "");
+        if (count2 == "") return 0;
         return Convert.ToInt32(count2);
     }
 }
