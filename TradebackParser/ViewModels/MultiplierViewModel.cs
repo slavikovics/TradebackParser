@@ -9,4 +9,7 @@ public partial class MultiplierViewModel : ViewModelBase
     
     [ObservableProperty]
     private bool _isSecondCountRuleActive = true;
+    
+    [ObservableProperty]
+    private bool _isPhraseFilterActive = true;
 }

@@ -7,7 +7,8 @@
              x:DataType="viewModels:MultiplierViewModel"
              x:Class="TradebackParser.Views.MultiplierView">
     <StackPanel>
-        <TextBlock FontSize="25">Set proposed price formula, exception rules</TextBlock>
+        <TextBlock HorizontalAlignment="Center"
+                   FontSize="25">Set proposed price formula, exception rules</TextBlock>
         <Grid HorizontalAlignment="Center" 
               VerticalAlignment="Top" 
               Height="300" 
@@ -94,7 +95,7 @@
                            Minimum="0" 
                            Value="0" 
                            Margin="3"/>
-            <CheckBox IsChecked="{Binding IsSecondCountRuleActive}" 
+            <CheckBox IsChecked="{Binding IsSecondCountRuleActive}"
                       Grid.Row="2" 
                       Grid.Column="0" 
                       VerticalAlignment="Center" 
@@ -106,23 +107,23 @@
                        Margin="3 3 3 3" 
                        HorizontalAlignment="Center" 
                        VerticalAlignment="Center">Count 2 greater than</TextBlock>
-            <Border IsEnabled="{Binding IsSecondCountRuleActive}" 
+            <Border IsEnabled="{Binding IsSecondCountRuleActive}"
                     Grid.Row="2" 
-                    Margin="3" 
-                    Width="30" 
-                    Height="30" 
-                    ClipToBounds="True" 
+                    Margin="3"
+                    Width="30"
+                    Height="30"
+                    ClipToBounds="True"
                     Grid.Column="2" 
                     CornerRadius="5" 
                     Background="{DynamicResource ButtonBackground}">
-                <Image IsEnabled="{Binding IsSecondCountRuleActive}" 
+                <Image IsEnabled="{Binding IsSecondCountRuleActive}"
                        VerticalAlignment="Center" 
                        HorizontalAlignment="Center" 
                        Source="../Assets/GreaterThanSign.png" 
                        Height="25" 
                        Width="25"/>
             </Border>
-            <NumericUpDown IsEnabled="{Binding IsSecondCountRuleActive}" 
+            <NumericUpDown IsEnabled="{Binding IsSecondCountRuleActive}"
                            Grid.Row="2" 
                            Grid.Column="3" 
                            Increment="1" 
@@ -131,5 +132,16 @@
                            Value="0" 
                            Margin="3"/>
         </Grid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <CheckBox VerticalAlignment="Center" Margin="5" IsChecked="{Binding IsPhraseFilterActive}"></CheckBox>
+            <TextBlock VerticalAlignment="Center" IsEnabled="{Binding IsPhraseFilterActive}" Margin="5">Exclude phrases</TextBlock>
+            <TextBox VerticalAlignment="Center" IsEnabled="{Binding IsPhraseFilterActive}" Margin="5" Width="350"></TextBox>
+        </StackPanel>
+        <Button CornerRadius="15" HorizontalAlignment="Center" Margin="15">
+            <StackPanel Orientation="Vertical">
+                <Image Width="25" Height="25" Source="../Assets/Next.png"/>
+                <TextBlock HorizontalAlignment="Center">Next</TextBlock>
+            </StackPanel>
+        </Button>
     </StackPanel>
 </UserControl>
