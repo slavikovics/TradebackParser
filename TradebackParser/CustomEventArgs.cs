@@ -4,9 +4,9 @@ namespace TradebackParser;
 
 public class CustomEventArgs : EventArgs
 {
-    public string Data { get; set; }
+    public object Data { get; }
 
-    public CustomEventArgs(string data)
+    public CustomEventArgs(object data)
     {
         Data = data;
     }

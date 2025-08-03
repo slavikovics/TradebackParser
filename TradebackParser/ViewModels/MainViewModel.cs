@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 using Avalonia.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -43,16 +46,16 @@ public partial class MainViewModel : ViewModelBase
     {
         GridPhase?.Invoke();
         WebsiteBorderColor = new SolidColorBrush(Colors.DarkGreen);
-        if (e is CustomEventArgs args) FileName = args.Data;
+        if (e is CustomEventArgs args) FileName = (string) args.Data;
         ContentViewModel = new ItemsViewModel(FileName);
         (ContentViewModel as ItemsViewModel)!.ItemsPreviewFinished += SwitchToMultipliers;
     }
 
-    private void SwitchToMultipliers()
+    private void SwitchToMultipliers(object? sender, EventArgs e)
     {
         MultiplierPhase?.Invoke();
         GridBorderColor = new SolidColorBrush(Colors.DarkGreen);
-        ContentViewModel = new MultiplierViewModel();
+        ContentViewModel = new MultiplierViewModel(((ObservableCollection<ItemModel>)(e as CustomEventArgs)!.Data).ToList());
     }
 
     private void SwitchToDownload(object? sender, EventArgs e)

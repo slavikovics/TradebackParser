@@ -9,7 +9,7 @@ namespace TradebackParser.ViewModels;
 
 public partial class ItemsViewModel : ViewModelBase
 {
-    public event Action? ItemsPreviewFinished;
+    public event EventHandler ItemsPreviewFinished;
     public int ItemCount => Items?.Count ?? 0;
     
     private ObservableCollection<ItemModel> _items;
@@ -39,6 +39,6 @@ public partial class ItemsViewModel : ViewModelBase
     [RelayCommand]
     private void FinishItemsPreview()
     {
-        ItemsPreviewFinished?.Invoke();
+        ItemsPreviewFinished?.Invoke(this, new CustomEventArgs(_items));
     }
 }
