@@ -6,6 +6,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:DataType="viewModels:MultiplierViewModel"
              x:Class="TradebackParser.Views.MultiplierView">
+    <ScrollViewer>
     <StackPanel>
         <TextBlock HorizontalAlignment="Center"
                    FontSize="25">Set proposed price formula, exception rules</TextBlock>
@@ -93,7 +94,7 @@
                            Increment="1" 
                            Height="20" 
                            Minimum="0" 
-                           Value="0" 
+                           Value="{Binding FirstCountValue}"
                            Margin="3"/>
             <CheckBox IsChecked="{Binding IsSecondCountRuleActive}"
                       Grid.Row="2" 
@@ -135,8 +136,9 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <CheckBox VerticalAlignment="Center" Margin="5" IsChecked="{Binding IsPhraseFilterActive}"></CheckBox>
             <TextBlock VerticalAlignment="Center" IsEnabled="{Binding IsPhraseFilterActive}" Margin="5">Exclude phrases</TextBlock>
-            <TextBox VerticalAlignment="Center" IsEnabled="{Binding IsPhraseFilterActive}" Margin="5" Width="350"></TextBox>
+            <TextBox VerticalAlignment="Center" IsEnabled="{Binding IsPhraseFilterActive}" Margin="5" Width="350" Text="{Binding PhrasesFilter}"/>
         </StackPanel>
+        <ListBox IsEnabled="{Binding IsPhraseFilterActive}" Width="500" HorizontalAlignment="Center" CornerRadius="15" Margin="10" ItemsSource="{Binding Phrases}" MaxHeight="200"></ListBox>
         <Button CornerRadius="15" HorizontalAlignment="Center" Margin="15">
             <StackPanel Orientation="Vertical">
                 <Image Width="25" Height="25" Source="../Assets/Next.png"/>
@@ -144,4 +146,5 @@
             </StackPanel>
         </Button>
     </StackPanel>
+    </ScrollViewer>
 </UserControl>
