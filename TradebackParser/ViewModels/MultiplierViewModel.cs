@@ -23,8 +23,7 @@ public partial class MultiplierViewModel : ViewModelBase
     [ObservableProperty]
     private double _secondCountValue;
     
-    [ObservableProperty]
-    //[NotifyPropertyChangedFor(nameof(Phrases))]
+    [ObservableProperty] 
     private string _phrasesFilter = string.Empty;
     
     public ObservableCollection<string> Phrases { get; set; }
@@ -77,7 +76,7 @@ public partial class MultiplierViewModel : ViewModelBase
 
     private List<string> FindPhrases()
     {
-        List<string> phrases = PhrasesFilter.Split(' ').ToList();
+        List<string> phrases = QuotedStringParser.ParseQuotedTokens(PhrasesFilter);
 
         for (int i = 0; i < phrases.Count; i++)
         {
