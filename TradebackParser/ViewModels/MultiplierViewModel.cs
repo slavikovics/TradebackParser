@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Avalonia.Data;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace TradebackParser.ViewModels;
 
@@ -29,6 +31,8 @@ public partial class MultiplierViewModel : ViewModelBase
     public ObservableCollection<string> Phrases { get; set; }
     
     public List<ItemModel> Items { get; set; }
+
+    public event EventHandler SwitchToDownloadsEvent;
 
     public MultiplierViewModel(List<ItemModel> items)
     {
@@ -104,5 +108,15 @@ public partial class MultiplierViewModel : ViewModelBase
         }
         
         itemsToRemove.ForEach(item => Items.Remove(item));
+    }
+
+    [RelayCommand]
+    private void SwitchToDownloads()
+    {
+        RemoveFirstCount();
+        RemoveSecondCount();
+        RemovePhraseFilter();
+        
+        SwitchToDownloadsEvent?.Invoke(this, new CustomEventArgs(Items.ToList()));
     }
 }

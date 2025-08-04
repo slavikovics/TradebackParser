@@ -56,11 +56,13 @@ public partial class MainViewModel : ViewModelBase
         MultiplierPhase?.Invoke();
         GridBorderColor = new SolidColorBrush(Colors.DarkGreen);
         ContentViewModel = new MultiplierViewModel(((ObservableCollection<ItemModel>)(e as CustomEventArgs)!.Data).ToList());
+        (ContentViewModel as MultiplierViewModel)!.SwitchToDownloadsEvent += SwitchToDownload;
     }
 
     private void SwitchToDownload(object? sender, EventArgs e)
     {
         DownloadPhase?.Invoke();
         MultiplierBorderColor = new SolidColorBrush(Colors.DarkGreen);
+        ContentViewModel = new DownloadsViewModel((List<ItemModel>)(e as CustomEventArgs)!.Data);
     }
 }

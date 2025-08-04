@@ -122,6 +122,7 @@
                  MaxHeight="200"></ListBox>
         <Button CornerRadius="15" 
                 HorizontalAlignment="Center" 
+                Command="{Binding SwitchToDownloadsCommand}"
                 Margin="15">
             <StackPanel Orientation="Vertical">
                 <Image Width="25" 

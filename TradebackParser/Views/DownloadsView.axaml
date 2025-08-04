@@ -1,0 +1,50 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:TradebackParser.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="TradebackParser.Views.DownloadsView"
+             x:DataType="viewModels:DownloadsViewModel">
+    <StackPanel Orientation="Vertical">
+        <TextBlock HorizontalAlignment="Center"
+                   FontSize="25">Download items list</TextBlock>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button CornerRadius="15"
+                    Grid.Column="0"
+                    HorizontalAlignment="Center" 
+                    Margin="15">
+                <StackPanel Orientation="Vertical">
+                    <Image Width="48" 
+                           Height="48" Source="../Assets/CsvFile.png"/>
+                    <TextBlock Margin="3 5 3 3" HorizontalAlignment="Center">CSV</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button CornerRadius="15" 
+                    HorizontalAlignment="Center" 
+                    Grid.Column="1"
+                    Margin="15">
+                <StackPanel Orientation="Vertical">
+                    <Image Width="48" 
+                           Height="48" Source="../Assets/Database.png"/>
+                    <TextBlock Margin="3 5 3 3" HorizontalAlignment="Center">SQLite</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button CornerRadius="15" 
+                    HorizontalAlignment="Center" 
+                    Grid.Column="2"
+                    Margin="15">
+                <StackPanel Orientation="Vertical">
+                    <Image Width="48" 
+                           Height="48" Source="../Assets/TextFile.png"/>
+                    <TextBlock Margin="3 5 3 3" HorizontalAlignment="Center">TXT</TextBlock>
+                </StackPanel>
+            </Button>
+        </Grid>
+    </StackPanel>
+</UserControl>
