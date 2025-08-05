@@ -17,6 +17,7 @@
             </Grid.ColumnDefinitions>
             <Button CornerRadius="15"
                     Grid.Column="0"
+                    Command="{Binding DownloadCsvFileCommand}"
                     HorizontalAlignment="Center" 
                     Margin="15">
                 <StackPanel Orientation="Vertical">

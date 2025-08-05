@@ -34,10 +34,13 @@ public partial class MainViewModel : ViewModelBase
     public event Action? MultiplierPhase;
     
     public event Action? DownloadPhase;
+    
+    private IFilePickerService _filePickerService;
 
     public MainViewModel(IFilePickerService filePickerService)
     {
         FileName = string.Empty;
+        _filePickerService = filePickerService;
         _contentViewModel = new OpenFileViewModel(filePickerService);
         (_contentViewModel as OpenFileViewModel)!.FileOpened += SwitchToItems;
     }
@@ -63,6 +66,6 @@ public partial class MainViewModel : ViewModelBase
     {
         DownloadPhase?.Invoke();
         MultiplierBorderColor = new SolidColorBrush(Colors.DarkGreen);
-        ContentViewModel = new DownloadsViewModel((List<ItemModel>)(e as CustomEventArgs)!.Data);
+        ContentViewModel = new DownloadsViewModel((List<ItemModel>)(e as CustomEventArgs)!.Data, _filePickerService);
     }
 }

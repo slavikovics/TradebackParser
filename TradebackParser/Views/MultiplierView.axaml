@@ -14,7 +14,7 @@
             <TextBlock VerticalAlignment="Center"
                        Width="90" 
                        Margin="10">Formula:</TextBlock>
-            <ComboBox SelectedIndex="0" 
+            <ComboBox SelectedIndex="{Binding SelectedIndex}"
                       HorizontalAlignment="Stretch" 
                       VerticalAlignment="Center" 
                       Margin="10">
@@ -37,7 +37,7 @@
             <NumericUpDown Margin="10" 
                            Height="20" 
                            Increment="0.01" 
-                           Value="0.55"/>
+                           Value="{Binding MultiplierValue}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
             <CheckBox IsChecked="{Binding IsFirstCountRuleActive}" 
@@ -96,7 +96,7 @@
                            Increment="1" 
                            Height="20" 
                            Minimum="0" 
-                           Value="0" 
+                           Value="{Binding SecondCountValue}" 
                            Margin="10"/>
             </StackPanel>
             

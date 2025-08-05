@@ -32,4 +32,20 @@ public class FilePickerService : IFilePickerService
         var files = await _topLevelService.MainWindow.StorageProvider.OpenFilePickerAsync(options);
         return files?.Count > 0 ? files[0].TryGetLocalPath() : null;
     }
+
+    public async Task<string?> SaveCsvFileAsync()
+    {
+        var filePickerOptions = new FilePickerSaveOptions
+        {
+            Title = "Save CSV File",
+            SuggestedFileName = "data.csv",
+            FileTypeChoices = new[]
+            {
+                new FilePickerFileType("CSV Files") { Patterns = new[] { "*.csv" } }
+            }
+        };
+
+        var file = await _topLevelService.MainWindow.StorageProvider.SaveFilePickerAsync(filePickerOptions);
+        return file?.TryGetLocalPath();
+    }
 }

@@ -27,6 +27,12 @@ public partial class MultiplierViewModel : ViewModelBase
     
     [ObservableProperty] 
     private string _phrasesFilter = string.Empty;
+
+    [ObservableProperty]
+    private int _selectedIndex = 0;
+    
+    [ObservableProperty]
+    private double _multiplierValue = 0.55;
     
     public ObservableCollection<string> Phrases { get; set; }
     
@@ -110,12 +116,33 @@ public partial class MultiplierViewModel : ViewModelBase
         itemsToRemove.ForEach(item => Items.Remove(item));
     }
 
+    private double CalculatePrice(ItemModel item)
+    {
+        switch (SelectedIndex)
+        {
+            case 0: return (double) item.Price1;
+            case 1: return (double) item.Price2;
+            case 2: return ((double) item.Price1 + (double) item.Price2) / 2.0;
+        }
+        return (double) item.Price1;
+    }
+
+    private void CountProposedPrices()
+    {
+        foreach (ItemModel item in Items)
+        {
+            var price = CalculatePrice(item) * MultiplierValue;
+            item.ProposedPrice = Convert.ToDecimal(Math.Round(price * 100));
+        }
+    }
+
     [RelayCommand]
     private void SwitchToDownloads()
     {
         RemoveFirstCount();
         RemoveSecondCount();
         RemovePhraseFilter();
+        CountProposedPrices();
         
         SwitchToDownloadsEvent?.Invoke(this, new CustomEventArgs(Items.ToList()));
     }

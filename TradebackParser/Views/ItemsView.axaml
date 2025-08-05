@@ -48,10 +48,6 @@
                 <DataGridTextColumn Header="Count 2" 
                                     Binding="{Binding Count2}"
                                     Width="Auto" />
-                
-                <DataGridTextColumn Header="Proposed price" 
-                                    Binding="{Binding ProposedPrice, StringFormat='{}{0:C}'}"
-                                    Width="Auto" />
             </DataGrid.Columns>
         </DataGrid>
         <Button Grid.Row="2" Command="{Binding FinishItemsPreviewCommand}" CornerRadius="15" HorizontalAlignment="Center" Margin="15">

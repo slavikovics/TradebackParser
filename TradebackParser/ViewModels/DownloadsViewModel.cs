@@ -1,13 +1,25 @@
 ﻿using System.Collections.Generic;
+using CommunityToolkit.Mvvm.Input;
+using TradebackParser.FilePicker;
 
 namespace TradebackParser.ViewModels;
 
-public class DownloadsViewModel : ViewModelBase
+public partial class DownloadsViewModel : ViewModelBase
 {
     private List<ItemModel> _items;
     
-    public DownloadsViewModel(List<ItemModel> items)
+    private IFilePickerService _filePickerService;
+    
+    public DownloadsViewModel(List<ItemModel> items, IFilePickerService filePickerService)
     {
         _items = items;
+        _filePickerService = filePickerService;
+    }
+
+    [RelayCommand]
+    private void DownloadCsvFile()
+    {
+        CsvHelper.SaveListToCsv(_items, _filePickerService);
     }
 }
+
